@@ -1,0 +1,43 @@
+{
+    "translations": {
+        "de": {
+            "Battery": "Batterie",
+            "Latitude": "aktueller Breitengrad",
+            "Longitude": "aktueller Längengrad",
+            "Accuracy": "Genauigkeit",
+            "Date": "Datum",
+            "map": "Karte",
+            "map type": "Kartentyp",
+            "map zoom": "Zoomstufe Karte",
+            "Map Options": "Karten Optionen",
+            "Device Info": "Geräte Informationen",
+            "Device Name": "Geräte Name",
+            "minutes": "Minuten",
+            "Minutes": "Minuten",
+            "options": "Optionen",
+            "User":"Benutzer",
+            "user name": "Benutzername",
+            "password": "Passwort",
+            "Password": "Passwort",
+            "Low Power Mode": "Energiesparmodus",
+            "Password for Apple-ID": "Passwort für Apple-ID",
+            "perspective": "Perspektive",
+            "picture": "Bild",
+            "select area": "Gebiet auswählen",
+            "service message": "Service Mitteilungen",
+            "Service": "Service",
+            " ... size of the map": "Größe der Karte",
+            "Routing Map": "Routenkarte anzeigen",
+            "Static Map": "Position in Karte anzeigen",
+            "enable routing information": "Routen Informationen anzeigen",
+            "Travel Distance": "Entfernung",
+            "Travel Time": "Reisezeit",
+            "Current Location": "Aktuelle Adresse",
+            "Update interval": "Aktualisierungsintervall",
+            "Update interval in minutes": "Aktualisierungsintervall in Minuten",
+            "Advanced routing settings": "Erweiterte Routing-Einstellungen",
+            "If this option is deactivated, the associated variables are also removed.": "Werden diese Optionen deaktiviert, werden auch die zugehörigen Variablen gelöscht!",
+            "This stores further information about the location in variables.": "Dies legt weitere Informationen zum Standort in Variablen ab."
+        }
+    }
+}

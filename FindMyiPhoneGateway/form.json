@@ -1,0 +1,25 @@
+{
+    "elements": [
+        {
+            "type": "ValidationTextBox",
+            "name": "User",
+            "caption": "Apple ID",
+            "enabled": true 
+        },
+        {
+            "type": "PasswordTextBox",
+            "name": "Password",
+            "caption": "Password for Apple-ID",
+            "enabled": true
+        },
+        { 
+            "name": "Refresh", 
+            "type": "NumberSpinner", 
+            "caption": "Update interval", 
+            "minimum":0, 
+            "suffix": "Minutes"
+        }
+    ],
+    "actions": [],
+    "status": []
+}

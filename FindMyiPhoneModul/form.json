@@ -1,0 +1,92 @@
+{
+    "elements":     
+    [
+        { 
+            "name": "DeviceName", 
+            "type": "ValidationTextBox", 
+            "caption": "Device Name", 
+            "enabled": false
+        },
+        {
+            "type": "ExpansionPanel",
+            "caption": "Map Options",
+            "items": [
+                {
+                    "type": "Label",
+                    "caption": "If this option is deactivated, the associated variables are also removed."
+                },
+                {
+                    "name": "active_googlemap",
+                    "type": "CheckBox",
+                    "caption": "Routing Map"
+                },
+                {
+                    "name": "static_googlemap",
+                    "type": "CheckBox",
+                    "caption": "Static Map"
+                },
+                {
+                    "name": "googlemap_api_key",
+                    "type": "ValidationTextBox",
+                    "caption": "GoogleMap API-Key"
+                },
+                {
+                    "type": "Label",
+                    "label": "Home Position"
+                },
+                {
+                    "name": "Location",
+                    "type": "SelectLocation",
+                    "caption": "Location"
+                },
+                {
+                    "type": "Label",
+                    "label": "Size of the map"
+                },
+                {
+                    "name": "horizontal_mapsize",
+                    "type": "NumberSpinner",
+                    "caption": " ... horizontal"
+                },
+                {
+                    "name": "vertical_mapsize",
+                    "type": "NumberSpinner",
+                    "caption": " ... vertical"
+                }
+            ]
+        },
+        {
+            "type": "ExpansionPanel",
+            "caption": "Advanced routing settings",
+            "items": [
+                {
+                    "type": "Label",
+                    "caption": "This stores further information about the location in variables."
+                },
+                {
+                    "type": "Label",
+                    "caption": "If this option is deactivated, the associated variables are also removed."
+                },
+                {
+                    "name": "routing_information",
+                    "type": "CheckBox",
+                    "caption": "Advanced routing settings"
+                }
+            ]
+        },
+        {
+            "type": "ExpansionPanel",
+            "caption": "Device Info",
+            "items": [
+                { 
+                    "name": "DeviceID", 
+                    "type": "ValidationTextBox", 
+                    "caption": "DeviceID:", 
+                    "enabled": false
+                }
+            ]
+        }
+	],
+    "actions": [],
+    "status": []
+}
