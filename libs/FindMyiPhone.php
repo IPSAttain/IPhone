@@ -105,8 +105,10 @@ class FindMyiPhone {
 			'clientContext' => $this->client_context,
 			'serverContext' => $this->server_context
 		));
-        if (property_exists(json_decode($this->make_request('refreshClient', $post_data)), 'userInfo'))
-        {
+		$get_data = json_decode($this->make_request('refreshClient', $post_data));
+		//if (property_exists($get_data, 'userInfo'))
+		if ($get_data !== null)
+		{
 			foreach (json_decode($this->make_request('refreshClient', $post_data))->content as $id => $device) {
 				$this->devices[$id] = $device;
 			}
