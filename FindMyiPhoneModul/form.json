@@ -91,7 +91,7 @@
         {
             "type": "Button",
             "caption": "Get Data",
-            "onClick": "FMiP_UpdateParent($id);"
+            "onClick": "FMiP_UpdateDeviceData($id);"
         }
     ],
     "status": []
