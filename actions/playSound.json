@@ -1,0 +1,18 @@
+{
+    "id": "{D3A52281-96E7-826B-5334-9304075CB73A}",
+    "caption": "Play Sound",
+    "form": [],
+    "action": "FMiP_Play_Sound($_IPS['TARGET']);",
+    "restrictions": {
+        "objectType": [ 1 ],
+        "moduleID": "{7B500376-2990-711D-7B4D-6D7D47351D73}"
+    },
+    "priority": 0,
+    "category":"target",
+    "locale": {
+        "de": {
+            "Play Sound": "Ton abspielen"
+        }
+    },
+    "description": "Play Sound"
+}
