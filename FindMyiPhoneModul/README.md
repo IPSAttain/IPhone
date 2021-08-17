@@ -17,7 +17,7 @@ Beschreibung des Moduls.
 
 ### 2. Vorraussetzungen
 
-- IP-Symcon ab Version 5.3
+- IP-Symcon ab Version 6.0
 
 ### 3. Software-Installation
 

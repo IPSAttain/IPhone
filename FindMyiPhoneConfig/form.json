@@ -9,15 +9,15 @@
                 {
                     "caption": "Name",
                     "name": "name",
-                    "width": "15vw"
+                    "width": "15%"
                 },{
                     "caption": "Model",
                     "name": "modelID",
-                    "width": "15vw"
+                    "width": "15%"
                 },{
                     "caption": "Type",
                     "name": "DetailType",
-                    "width": "13vw"
+                    "width": "13%"
                 },                {
                     "caption": "ID",
                     "name": "DeviceID",

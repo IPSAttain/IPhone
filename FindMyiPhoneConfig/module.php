@@ -1,4 +1,5 @@
 <?php
+	require_once __DIR__ . '/../libs/FindMyiPhone.php';
 	class FindMyiPhoneConfig extends IPSModule {
 
 		public function Create()
