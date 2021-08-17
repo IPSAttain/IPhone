@@ -40,8 +40,8 @@ require_once __DIR__ . '/../libs/FindMyiPhone.php';
 				case 'Get_Data':
 					$returndata = $this->GetData();
 					break;
-					
-				case 'Update_Data':
+
+				case 'Update_Device_Data':
 						$returndata = $this->UpdateData();
 						break;
 

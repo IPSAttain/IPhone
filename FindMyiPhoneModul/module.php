@@ -226,9 +226,10 @@
 			$return = $this->Send_to_Parent("Phone_Found\r". $this->ReadPropertyString('DeviceID'));
 			return $return;
 		}
-		public function UpdateParent()
+		
+		public function UpdateDeviceData()
 		{
-			$return = $this->Send_to_Parent("Update_Data\r". $this->ReadPropertyString('DeviceID'));
+			$return = $this->Send_to_Parent("Update_Device_Data\r". $this->ReadPropertyString('DeviceID'));
 			return $return;
 		}
 		
