@@ -1,0 +1,25 @@
+{
+    "id": "{BC3542A5-8B28-81C8-5BCE-FE0779F8CCF1}",
+    "caption": "Send Message",
+    "form": [
+        {
+            "type": "ValidationTextBox",
+            "name": "VALUE",
+            "caption": "Value"
+        }
+    ],
+    "action": "FMiP_Send_Message($_IPS['TARGET'], $_IPS['VALUE']);",
+    "restrictions": {
+        "objectType": [ 1 ],
+        "moduleID": "{7B500376-2990-711D-7B4D-6D7D47351D73}"
+    },
+    "priority": 0,
+    "category":"target",
+    "locale": {
+        "de": {
+            "Value": "Wert",
+            "Send Message": "Mitteilung senden"
+        }
+    },
+    "description": "Send Message"
+}
