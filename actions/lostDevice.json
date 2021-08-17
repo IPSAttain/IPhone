@@ -1,0 +1,46 @@
+{
+    "id": "{936DA02D-736E-F85E-D83D-E93878A03B96}",
+    "caption": "Lost Device",
+    "form": [
+        {
+            "type": "ValidationTextBox",
+            "name": "PASSCODE",
+            "caption": "Passcode"
+        },
+        {
+            "type":"Label",
+            "caption":"Your device cannot be unlocked until the correct code has been entered."
+        },
+        {
+            "type": "ValidationTextBox",
+            "name": "PHONENO",
+            "caption": "Owner Phone Number"
+        },
+        {
+            "type": "ValidationTextBox",
+            "name": "MESSAGE",
+            "caption": "Message"
+        },
+        {
+            "type":"Label",
+            "caption":"Leave a number and a message to be shown to the person who finds this device."
+        }
+    ],
+    "action": "FMiP_Lost_Device($_IPS['TARGET'], $_IPS['PASSCODE'], $_IPS['PHONENO'], $_IPS['MESSAGE']);",
+    "restrictions": {
+        "objectType": [ 1 ],
+        "moduleID": "{7B500376-2990-711D-7B4D-6D7D47351D73}"
+    },
+    "priority": 0,
+    "category":"target",
+    "locale": {
+        "de": {
+            "Passcode": "Code erforderlich",
+            "Your device cannot be unlocked until the correct code has been entered.":"Dein Gerät kann nicht entsperrt werden, bis der korrekte Code eingegeben wurde.",
+            "Owner Phone Number":"Telefonnummer",
+            "Message": "Mitteilung",
+            "Leave a number and a message to be shown to the person who finds this device.":"Hinterlasse eine Nummer und eine Nachricht, die der Person angezeigt wird, die dieses Gerät findet."
+        }
+    },
+    "description": "Send Message"
+}
