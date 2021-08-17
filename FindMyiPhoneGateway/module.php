@@ -72,7 +72,7 @@ require_once __DIR__ . '/../libs/FindMyiPhone.php';
 			return $returndata;
 		}
 		
-		protected function UpdateData()
+		public function UpdateData()
 		{
 			$phonedata = $this->GetData();
 			$this->SendDataToChildren(json_encode(Array("DataID" => "{018EF6B5-AB94-40C6-AA53-46943E824ACF}", "Buffer" => $phonedata)));
