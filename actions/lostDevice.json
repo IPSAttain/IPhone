@@ -35,12 +35,14 @@
     "category":"target",
     "locale": {
         "de": {
+            "Lost Device":"Gerät verloren",
+            "Mark as lost":"Als verloren markieren",
             "Passcode": "Code erforderlich",
             "Your device cannot be unlocked until the correct code has been entered.":"Dein Gerät kann nicht entsperrt werden, bis der korrekte Code eingegeben wurde.",
-            "Owner Phone Number":"Telefonnummer",
+            "Owner Phone Number":"Eigene Telefonnummer",
             "Message": "Mitteilung",
             "Leave a number and a message to be shown to the person who finds this device.":"Hinterlasse eine Nummer und eine Nachricht, die der Person angezeigt wird, die dieses Gerät findet."
         }
     },
-    "description": "Send Message"
+    "description": "Mark as lost"
 }
