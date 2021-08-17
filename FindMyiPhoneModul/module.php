@@ -229,11 +229,7 @@
 
 		public function UpdateDeviceData()
 		{
-			$return = $this->SendDataToParent(json_encode([
-				'DataID' => "{79827379-F36E-4ADA-8A95-5F8D1DC92FA9}",
-				'Buffer' => utf8_encode("Get_Data"),
-			]));
-			//$return = $this->Send_to_Parent("Update_Device_Data\r". $this->ReadPropertyString('DeviceID'));
+			$return = $this->Send_to_Parent("Update_Device_Data\r". $this->ReadPropertyString('DeviceID'));
 			return $return;
 		}
 		
