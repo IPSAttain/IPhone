@@ -228,7 +228,7 @@
 		}
 		public function UpdateParent()
 		{
-			$return = $this->Send_to_Parent("Get_Data\r". $this->ReadPropertyString('DeviceID'));
+			$return = $this->Send_to_Parent("Update_Data\r". $this->ReadPropertyString('DeviceID'));
 			return $return;
 		}
 		
