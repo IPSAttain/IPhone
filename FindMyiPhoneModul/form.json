@@ -91,7 +91,7 @@
         {
             "type": "Button",
             "caption": "Get Data",
-            "onClick": "FMiP_UpdateParent($this->InstanceID);"
+            "onClick": "FMiP_UpdateParent($id);"
         }
     ],
     "status": []
