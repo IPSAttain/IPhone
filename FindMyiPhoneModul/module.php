@@ -226,6 +226,11 @@
 			$return = $this->Send_to_Parent("Phone_Found\r". $this->ReadPropertyString('DeviceID'));
 			return $return;
 		}
+		public function UpdateParent()
+		{
+			$return = $this->Send_to_Parent("Get_Data\r". $this->ReadPropertyString('DeviceID'));
+			return $return;
+		}
 		
 		protected function Send_to_Parent($Buffer)
 		{

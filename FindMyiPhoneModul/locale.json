@@ -1,6 +1,7 @@
 {
     "translations": {
         "de": {
+            "Get Data":"Daten Abfrage",
             "Battery": "Batterie",
             "Latitude": "aktueller Breitengrad",
             "Longitude": "aktueller Längengrad",
