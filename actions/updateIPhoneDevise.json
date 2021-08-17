@@ -1,0 +1,19 @@
+{
+    "id": "{0082A67D-8239-3E0C-A128-56FEC96682D2}",
+    "caption": "Update IPhone Data",
+    "form": [],
+    "action": "FMiP_UpdateDeviceData($_IPS['TARGET']);",
+    "restrictions": {
+        "objectType": [ 1 ],
+        "moduleID": "{7B500376-2990-711D-7B4D-6D7D47351D73}"
+    },
+    "priority": 0,
+    "locale": {
+        "de": {
+            "Switch to Value": "Schalte auf Wert",
+            "Value": "Wert",
+            "Request Data from IPhone": "Daten vom IPhone abrufen"
+        }
+    },
+    "format": "Request Data from IPhone"
+}
