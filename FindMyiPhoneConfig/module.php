@@ -41,15 +41,15 @@
 			// Configurator
 			$Values = array();
 			$devices = json_decode($devices, true);
-			//IPS_LogMessage($this->InstanceID . " " . __FUNCTION__,print_r($devices,true));
+			//$this->LogMessage(__FUNCTION__,print_r($devices,true) , 10206);
 			if ($devices == "Empty User or Password") 
 			{
-				IPS_LogMessage($this->InstanceID . " " . __FUNCTION__, "Empty User or Password");
+				$this->LogMessage(__FUNCTION__ . " Empty User or Password",10204);
 				return;
 			}
 			elseif ($devices == "wrong credentials" || $devices == "") 
 			{
-				IPS_LogMessage($this->InstanceID . " " . __FUNCTION__, "No feedback from iCloud Server. Maybe wrong User or Password");
+				$this->LogMessage(__FUNCTION__, " No feedback from iCloud Server. Maybe wrong User or Password" , 10204);
 				return;
 			}
 			else
@@ -90,7 +90,7 @@
 				'Buffer' => utf8_encode("Get_Data"),
 			]));
 			$this->SendDebug("Received from Gateway", $return , 0);
-			//IPS_LogMessage($this->InstanceID . " " . __FUNCTION__, $return);
+			//$this->LogMessage(__FUNCTION__, $return , 10206);
 			return $return;
 		}
 	}

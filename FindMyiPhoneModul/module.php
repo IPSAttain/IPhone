@@ -48,7 +48,7 @@
 			// todo...
 			if ($devices == "wrong credentials" || $devices == "") 
 			{
-				IPS_LogMessage(IPS_GetName($this->InstanceID) . ' (#' . $this->InstanceID . ') ' . __FUNCTION__, "No feedback from iCloud Server. Maybe wrong User or Password");
+				$this->LogMessage(__FUNCTION__, " No feedback from iCloud Server. Maybe wrong User or Password" ,10204);
 				return;
 			}
 			foreach ($devices as $device)

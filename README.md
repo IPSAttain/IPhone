@@ -15,11 +15,11 @@ Dazu ist die mit dem Gerät verbundene Apple-ID nötig.
 - Geo Position des Gerätes
 ###### Berrechnungen aus Position
 - Optional: Aktuelle Adresse (Google)
-- Planung : (Ermittel der W3W Standorts https://what3words.com/de/about/)
+- Planung : (Ermitteln des W3W Standorts https://what3words.com/de/about/)
 - Optional: Eintragen der Position in eine Karte (Google)
 - Optional: Berrechnen der Route zur Home Adresse (km , Zeit) (Google)
 ###### Sende Funktionen
-- Gerät zum Abspielen eines Suchtones veranlassen (Play Sound)
+- Gerät zum Abspielen eines Suchtones veranlassen 
 - An das Gerät eine Mitteilung senden
 - Als verloren markieren
 - Benachrichtigung wenn gefunden setzen
