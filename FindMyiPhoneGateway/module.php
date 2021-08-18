@@ -7,10 +7,10 @@ require_once __DIR__ . '/../libs/FindMyiPhone.php';
 			//Never delete this line!
 			parent::Create();
 
-			$this->RegisterPropertyString("User", "user@domain.tld");
-			$this->RegisterPropertyString("Password", "");
-			$this->RegisterPropertyInteger("Refresh",5);
-			$this->RegisterTimer("Update", 300000, "FMiP_UpdateData($this->InstanceID);");
+			$this->RegisterPropertyString('User', 'user@domain.tld');
+			$this->RegisterPropertyString('Password', '');
+			$this->RegisterPropertyInteger('Refresh',5);
+			$this->RegisterTimer('Update', 300000, 'FMiP_UpdateData($this->InstanceID);');
 		}
 
 		public function Destroy()
@@ -23,7 +23,7 @@ require_once __DIR__ . '/../libs/FindMyiPhone.php';
 		{
 			//Never delete this line!
 			parent::ApplyChanges();
-			$this->SetTimerInterval("Update", $this->ReadPropertyInteger("Refresh")*60000);
+			$this->SetTimerInterval('Update', $this->ReadPropertyInteger('Refresh')*60000);
 		}
 
 		public function ForwardData($JSONString)
@@ -32,8 +32,8 @@ require_once __DIR__ . '/../libs/FindMyiPhone.php';
 			//$this->LogMessage(__FUNCTION__, utf8_decode($data->Buffer) , 10206);
 			$data = preg_split('/\n|\r\n?/', $data['Buffer']);
 			//$this->LogMessage(__FUNCTION__, print_r($data) , 10206);
-			$User = $this->ReadPropertyString("User");
-			$Password = $this->ReadPropertyString("Password");
+			$User = $this->ReadPropertyString('User');
+			$Password = $this->ReadPropertyString('Password');
 			$returndata = "";
 			switch ($data[0])
 			{
@@ -75,24 +75,24 @@ require_once __DIR__ . '/../libs/FindMyiPhone.php';
 		public function UpdateData()
 		{
 			$phonedata = $this->GetData();
-			$this->SendDataToChildren(json_encode(Array("DataID" => "{018EF6B5-AB94-40C6-AA53-46943E824ACF}", "Buffer" => $phonedata)));
+			$this->SendDataToChildren(json_encode(Array('DataID' => '{018EF6B5-AB94-40C6-AA53-46943E824ACF}', 'Buffer' => $phonedata)));
 		}
 
 		protected function GetData()
 		{
-			$User = $this->ReadPropertyString("User");
-			$Password = $this->ReadPropertyString("Password");
+			$User = $this->ReadPropertyString('User');
+			$Password = $this->ReadPropertyString('Password');
 			if ($Password == "" || $User == "") 
 			{
-				$this->LogMessage(__FUNCTION__, ' Empty User or Password' ,10204);
-				$this->SendDebug("Config", "Empty User or Password" , 0);
-				return "Empty User or Password";
+				$this->LogMessage('(' . __FUNCTION__ . ') Empty User or Password' ,10204);
+				$this->SendDebug('Config', 'Empty User or Password' , 0);
+				return 'Empty User or Password';
 			}
-			$this->SendDebug("Request Data", "User = $User " , 0);
+			$this->SendDebug('Request Data', 'User = $User ' , 0);
 			$FindMyiPhone = new FindMyiPhone($User, $Password);
 			$devices = $FindMyiPhone->devices;
 			$devices = json_encode($devices);
-			$this->SendDebug("Send to Child", print_r($devices,true) , 0);
+			$this->SendDebug('Send to Child', print_r($devices,true) , 0);
 			return $devices;
 		}
 	}
