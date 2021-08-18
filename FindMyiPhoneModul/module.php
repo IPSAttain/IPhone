@@ -6,8 +6,8 @@
 			//Never delete this line!
 			parent::Create();
 			$this->ConnectParent('{A5FAE93E-34F2-2F0E-8D5C-929BCD5CF5B7}'); 
-			$this->RegisterPropertyString('DeviceID', "");
-			$this->RegisterPropertyString('DeviceName', "");
+			$this->RegisterPropertyString('DeviceID', '');
+			$this->RegisterPropertyString('DeviceName', '');
 			$this->RegisterPropertyString('Location', '{"latitude":52.5163,"longitude":13.3777}');
 			$this->RegisterPropertyBoolean('active_googlemap', false);
 			$this->RegisterPropertyBoolean('static_googlemap', false);
@@ -27,11 +27,11 @@
 		{
 			//Never delete this line!
 			parent::ApplyChanges();
-			$Idents = array("fmip_route_time", "fmip_route_distance", "fmip_route_address");
+			$Idents = array('fmip_route_time', 'fmip_route_distance', 'fmip_route_address');
 			if (!$this->ReadPropertyBoolean('routing_information')) $this->DeleteVars($Idents);
-			$Idents = array("fmip_dynmap");
+			$Idents = array('fmip_dynmap');
 			if (!$this->ReadPropertyBoolean('active_googlemap')) $this->DeleteVars($Idents);
-			$Idents = array("fmip_googlemap", "fmip_googlemap_zoom");
+			$Idents = array('fmip_googlemap', 'fmip_googlemap_zoom');
 			if (!$this->ReadPropertyBoolean('static_googlemap')) $this->DeleteVars($Idents);
 		}
 
@@ -45,17 +45,21 @@
 		{
 			$devices = json_decode($data,true);
 			$this->SendDebug(__FUNCTION__, print_r($devices,true) , 0);
-			// todo...
-			if ($devices == "wrong credentials" || $devices == "") 
+			if ($devices == 'wrong credentials') 
 			{
-				$this->LogMessage(__FUNCTION__. " No feedback from iCloud Server. Maybe wrong User or Password" ,10204);
+				$this->LogMessage('(' . __FUNCTION__. ') Wrong User or Password.' ,10204);
+				return;
+			}
+			if ($devices == '') 
+			{
+				$this->LogMessage('(' . __FUNCTION__. ') No feedback from iCloud Server.' ,10204);
 				return;
 			}
 			foreach ($devices as $device)
 			{
 				if ($this->ReadPropertyString('DeviceID') == $device['id'])
 				{
-					$this->SendDebug(__FUNCTION__, "Matched Device ID => " . $device['id'] , 0);
+					$this->SendDebug(__FUNCTION__, 'Matched Device ID => ' . $device['id'] , 0);
 					$Ident = 'batteryLevel';
 					if(isset($device[$Ident]))
 					{
@@ -90,7 +94,7 @@
 					}
 					else
 					{
-						$this->SendDebug(__FUNCTION__, "No location recived" , 0);
+						$this->SendDebug(__FUNCTION__, 'No location recived' , 0);
 					}
 				}
 			}
@@ -143,13 +147,13 @@
 			$homepos = number_format($homelocation->latitude,5,'.','') . ',' . number_format($homelocation->longitude,5,'.','');
 			$api_key = $this->ReadPropertyString('googlemap_api_key');
 			$Route = simplexml_load_file(utf8_encode('https://maps.googleapis.com/maps/api/directions/xml?key=' . $api_key . '&origin=' . $source . '&destination=' . $homepos . '&sensor=false'));
-			if ((string)$Route->status == "OK"){
+			if ((string)$Route->status == 'OK'){
 				$Time = strval($Route->route->leg->duration->text);
 				$this->SaveData('fmip_route_time', $Time, $this->Translate('Travel Time'), '', 'String', 21);
 				//Road Distance
 				$Distance = strval($Route->route->leg->distance->text); 
 				$this->SaveData('fmip_route_distance', $Distance, $this->Translate('Travel Distance'), '', 'String' , 20);
-				$Address =strval($Route->route->leg->start_address);
+				$Address = strval($Route->route->leg->start_address);
 				$this->SaveData('fmip_route_address', $Address, $this->Translate('Current Location'), '', 'String', 22);
 			}
 			return;
@@ -158,10 +162,10 @@
 		// save Data
 		protected function SaveData($Ident, $Value, $Name, $Profil, $VarType, $TreePosition = 0)
 		{
-			if ($VarType == "Bool") 	$this->RegisterVariableBoolean($Ident, $this->Translate($Name), $Profil, $TreePosition);
-			if ($VarType == "Integer") 	$this->RegisterVariableInteger($Ident, $this->Translate($Name), $Profil, $TreePosition);
-			if ($VarType == "Float") 	$this->RegisterVariableFloat($Ident, $this->Translate($Name), $Profil, $TreePosition);
-			if ($VarType == "String") 	$this->RegisterVariableString($Ident, $this->Translate($Name), $Profil, $TreePosition);
+			if ($VarType == 'Bool') 	$this->RegisterVariableBoolean($Ident, $this->Translate($Name), $Profil, $TreePosition);
+			if ($VarType == 'Integer') 	$this->RegisterVariableInteger($Ident, $this->Translate($Name), $Profil, $TreePosition);
+			if ($VarType == 'Float') 	$this->RegisterVariableFloat($Ident, $this->Translate($Name), $Profil, $TreePosition);
+			if ($VarType == 'String') 	$this->RegisterVariableString($Ident, $this->Translate($Name), $Profil, $TreePosition);
 			if($this->GetValue($Ident) != $Value) 
 			{
 				$this->SetValue($Ident, $Value);
@@ -175,7 +179,7 @@
 			//$Idents = preg_split(' ', $Idents);
 			foreach ($Idents as $Ident)
 			{
-				$this->MaintainVariable($Ident, "", 3, "", 0, false);
+				$this->MaintainVariable($Ident, '', 3, '', 0, false);
 				$this->SendDebug(__FUNCTION__, 'Variable deleted. Ident => ' . $Ident , 0);
 			}
 		}
@@ -201,19 +205,19 @@
 
 		public function Play_Sound()
 		{
-			$return = $this->Send_to_Parent("Play_Sound\r". $this->ReadPropertyString('DeviceID'));
+			$return = $this->Send_to_Parent('Play_Sound\r'. $this->ReadPropertyString('DeviceID'));
 			return $return;
 		}
 		
 		public function Send_Message(string $message)
 		{
-			$return = $this->Send_to_Parent("Send_Message\r". $this->ReadPropertyString('DeviceID') . "\r" . $message);
+			$return = $this->Send_to_Parent('Send_Message\r'. $this->ReadPropertyString('DeviceID') . '\r' . $message);
 			return $return;
 		}
 
 		public function Lost_Device(string $passcode, string $owner_phone_number, string $message)
 		{
-			$return = $this->Send_to_Parent("Lost_Device\r". $this->ReadPropertyString('DeviceID') . "\r" . $passcode . "\r" . $owner_phone_number . "\r".true."\r" . $message);
+			$return = $this->Send_to_Parent('Lost_Device\r'. $this->ReadPropertyString('DeviceID') . '\r' . $passcode . '\r' . $owner_phone_number . '\r'.true.'\r' . $message);
 					//$data[2] => passcode ( 4 digits)
 					//$data[3] => owner_phone_number
 					//$data[4] => sound (true/false)
@@ -223,20 +227,20 @@
 
 		public function Notify_When_Found()
 		{
-			$return = $this->Send_to_Parent("Phone_Found\r". $this->ReadPropertyString('DeviceID'));
+			$return = $this->Send_to_Parent('Phone_Found\r'. $this->ReadPropertyString('DeviceID'));
 			return $return;
 		}
 
 		public function UpdateDeviceData()
 		{
-			$return = $this->Send_to_Parent("Update_Device_Data\r". $this->ReadPropertyString('DeviceID'));
+			$return = $this->Send_to_Parent('Update_Device_Data\r'. $this->ReadPropertyString('DeviceID'));
 			return $return;
 		}
 		
 		protected function Send_to_Parent($Buffer)
 		{
 			$return = $this->SendDataToParent(json_encode([
-				'DataID' => "{79827379-F36E-4ADA-8A95-5F8D1DC92FA9}",
+				'DataID' => '{79827379-F36E-4ADA-8A95-5F8D1DC92FA9}',
 				'Buffer' => utf8_encode($Buffer),
 			]));
 			$this->SendDebug(__FUNCTION__,  $return , 0);
