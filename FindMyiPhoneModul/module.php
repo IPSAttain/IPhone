@@ -44,7 +44,7 @@
 		protected function ProceedData($data)
 		{
 			$devices = json_decode($data,true);
-			$this->SendDebug(__FUNCTION__, print_r($devices,true) , 0);
+			$this->SendDebug(__FUNCTION__. print_r($devices,true) , 0);
 			// todo...
 			if ($devices == "wrong credentials" || $devices == "") 
 			{
