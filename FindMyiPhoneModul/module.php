@@ -44,11 +44,11 @@
 		protected function ProceedData($data)
 		{
 			$devices = json_decode($data,true);
-			$this->SendDebug(__FUNCTION__. print_r($devices,true) , 0);
+			$this->SendDebug(__FUNCTION__, print_r($devices,true) , 0);
 			// todo...
 			if ($devices == "wrong credentials" || $devices == "") 
 			{
-				$this->LogMessage(__FUNCTION__, " No feedback from iCloud Server. Maybe wrong User or Password" ,10204);
+				$this->LogMessage(__FUNCTION__. " No feedback from iCloud Server. Maybe wrong User or Password" ,10204);
 				return;
 			}
 			foreach ($devices as $device)
