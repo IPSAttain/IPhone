@@ -49,7 +49,7 @@
 			}
 			elseif ($devices == "wrong credentials" || $devices == "") 
 			{
-				$this->LogMessage(__FUNCTION__, " No feedback from iCloud Server. Maybe wrong User or Password" , 10204);
+				$this->LogMessage(__FUNCTION__ . " No feedback from iCloud Server. Maybe wrong User or Password" , 10204);
 				return;
 			}
 			else
