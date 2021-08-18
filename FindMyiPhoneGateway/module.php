@@ -31,7 +31,7 @@ require_once __DIR__ . '/../libs/FindMyiPhone.php';
 			$data = json_decode($JSONString,true);
 			//$this->LogMessage(__FUNCTION__, utf8_decode($data->Buffer) , 10206);
 			$data = preg_split('/\n|\r\n?/', $data['Buffer']);
-			//$this->LogMessage(__FUNCTION__, print_r($data) , 10206);
+			//$this->LogMessage(__FUNCTION__, print_r($data) , 10206) ;
 			$User = $this->ReadPropertyString("User");
 			$Password = $this->ReadPropertyString("Password");
 			$returndata = "";
