@@ -29,9 +29,9 @@ require_once __DIR__ . '/../libs/FindMyiPhone.php';
 		public function ForwardData($JSONString)
 		{
 			$data = json_decode($JSONString,true);
-			//$this->LogMessage(__FUNCTION__, utf8_decode($data->Buffer) , 10206);
+			//$this->LogMessage(__FUNCTION__. utf8_decode($data->Buffer) , 10206);
 			$data = preg_split('/\n|\r\n?/', $data['Buffer']);
-			//$this->LogMessage(__FUNCTION__, print_r($data) , 10206) ;
+			//$this->LogMessage(__FUNCTION__. print_r($data) , 10206) ;
 			$User = $this->ReadPropertyString("User");
 			$Password = $this->ReadPropertyString("Password");
 			$returndata = "";
@@ -84,7 +84,7 @@ require_once __DIR__ . '/../libs/FindMyiPhone.php';
 			$Password = $this->ReadPropertyString("Password");
 			if ($Password == "" || $User == "") 
 			{
-				$this->LogMessage(__FUNCTION__, ' Empty User or Password' ,10204);
+				$this->LogMessage(__FUNCTION__. ' Empty User or Password' ,10204);
 				$this->SendDebug("Config", "Empty User or Password" , 0);
 				return "Empty User or Password";
 			}

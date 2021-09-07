@@ -41,7 +41,7 @@
 			// Configurator
 			$Values = array();
 			$devices = json_decode($devices, true);
-			//$this->LogMessage(__FUNCTION__,print_r($devices,true) , 10206);
+			//$this->LogMessage(__FUNCTION__.print_r($devices,true) , 10206);
 			if ($devices == "Empty User or Password") 
 			{
 				$this->LogMessage(__FUNCTION__ . " Empty User or Password",10204);
