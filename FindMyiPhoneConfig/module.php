@@ -44,12 +44,12 @@
 			//$this->LogMessage(__FUNCTION__.print_r($devices,true) , 10206);
 			if ($devices == "Empty User or Password") 
 			{
-				$this->LogMessage(__FUNCTION__ . " Empty User or Password",10204);
+				$this->SendDebug(__FUNCTION__ , " Empty User or Password",0);
 				return;
 			}
 			elseif ($devices == "wrong credentials" || $devices == "") 
 			{
-				$this->LogMessage(__FUNCTION__ . " No feedback from iCloud Server. Maybe wrong User or Password" , 10204);
+				$this->SendDebug(__FUNCTION__ , " No feedback from iCloud Server. Maybe wrong User or Password" , 0);
 				return;
 			}
 			else
@@ -58,7 +58,7 @@
 			{
 				$ID	= 0;
 				foreach ($Instances as $Instance){
-					$this->SendDebug("Created Instances", IPS_GetObject($Instance)['ObjectName'] , 0);
+					//$this->SendDebug("Created Instances", IPS_GetObject($Instance)['ObjectName'] , 0);
 					if (IPS_GetProperty($Instance,'DeviceID')== $device['id'])
 					{
 						$ID = $Instance;

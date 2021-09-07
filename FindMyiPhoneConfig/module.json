@@ -1,7 +1,7 @@
 {
     "id": "{20E3718F-573A-7EA8-C307-EECE10B541D5}",
     "name": "FindMyiPhoneConfig",
-    "type": 3,
+    "type": 4,
     "vendor": "Apple",
     "aliases": [
 		"Find my iPhone Configurator"

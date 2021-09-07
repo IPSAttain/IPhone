@@ -74,6 +74,7 @@ require_once __DIR__ . '/../libs/FindMyiPhone.php';
 		
 		public function UpdateData()
 		{
+			$this->SendDebug(__FUNCTION__, "Data Update requested " , 0);
 			$phonedata = $this->GetData();
 			$this->SendDataToChildren(json_encode(Array("DataID" => "{018EF6B5-AB94-40C6-AA53-46943E824ACF}", "Buffer" => $phonedata)));
 		}
@@ -88,11 +89,11 @@ require_once __DIR__ . '/../libs/FindMyiPhone.php';
 				$this->SendDebug("Config", "Empty User or Password" , 0);
 				return "Empty User or Password";
 			}
-			$this->SendDebug("Request Data", "User = $User " , 0);
+			$this->SendDebug(__FUNCTION__, "User = $User " , 0);
 			$FindMyiPhone = new FindMyiPhone($User, $Password);
 			$devices = $FindMyiPhone->devices;
 			$devices = json_encode($devices);
-			$this->SendDebug("Send to Child", print_r($devices,true) , 0);
+			$this->SendDebug(__FUNCTION__, print_r($devices,true) , 0);
 			return $devices;
 		}
 	}
