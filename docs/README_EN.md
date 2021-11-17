@@ -1,4 +1,4 @@
-# IPS PHP Biliothek für die Abfrage von Daten eines Apple Gerätes.
+# IPS Libary to read data from the Apple Device.
 [![Version](https://img.shields.io/badge/Symcon-PHPModul-red.svg)](https://www.symcon.de/service/dokumentation/entwicklerbereich/sdk-tools/sdk-php/)
 ![Version](https://img.shields.io/badge/Symcon%20Version-6.0%20%3E-green.svg)
 
@@ -59,6 +59,7 @@ The Apple ID connected to the device is required.
 ### 5. Weiter Informationen
 
 Special thank to
+
 Copyright (c) 2013 Neal <neal@ineal.me>  
 https://github.com/Neal/FindMyiPhone  
 Thanks for sharing
