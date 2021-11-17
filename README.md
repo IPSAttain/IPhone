@@ -1,3 +1,4 @@
+# ![English Section:](docs/README_EN.md)
 # IPS PHP Biliothek für die Abfrage von Daten eines Apple Gerätes.
 [![Version](https://img.shields.io/badge/Symcon-PHPModul-red.svg)](https://www.symcon.de/service/dokumentation/entwicklerbereich/sdk-tools/sdk-php/)
 ![Version](https://img.shields.io/badge/Symcon%20Version-6.0%20%3E-green.svg)
@@ -56,3 +57,5 @@ Aufgebaut ist dieses Modul auf eine PHP class von Neal
 Copyright (c) 2013 Neal <neal@ineal.me>  
 https://github.com/Neal/FindMyiPhone  
 Thanks for sharing
+
+<a href="https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=6CSLZLEKKGT8Q" target="_blank"><img src="https://www.paypalobjects.com/de_DE/DE/i/btn/btn_donate_LG.gif" border="0" /></a>

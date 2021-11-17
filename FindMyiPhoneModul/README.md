@@ -7,61 +7,46 @@ Beschreibung des Moduls.
 2. [Voraussetzungen](#2-voraussetzungen)
 3. [Software-Installation](#3-software-installation)
 4. [Einrichten der Instanzen in IP-Symcon](#4-einrichten-der-instanzen-in-ip-symcon)
-5. [Statusvariablen und Profile](#5-statusvariablen-und-profile)
-6. [WebFront](#6-webfront)
+5. [Statusvariablen](#5-statusvariablen)
+6. [Aktionen](#6-aktionen)
 7. [PHP-Befehlsreferenz](#7-php-befehlsreferenz)
 
 ### 1. Funktionsumfang
 
-*
-
 ### 2. Vorraussetzungen
 
 - IP-Symcon ab Version 6.0
-
+- Apple-ID und Passwort
 ### 3. Software-Installation
 
 * Über den Module Store das 'FindMyiPhoneModul'-Modul installieren.
-* Alternativ über das Module Control folgende URL hinzufügen
 
 ### 4. Einrichten der Instanzen in IP-Symcon
 
- Unter 'Instanz hinzufügen' kann das 'FindMyiPhoneModul'-Modul mithilfe des Schnellfilters gefunden werden.  
-	- Weitere Informationen zum Hinzufügen von Instanzen in der [Dokumentation der Instanzen](https://www.symcon.de/service/dokumentation/konzepte/instanzen/#Instanz_hinzufügen)
-
+Instanzen sollten mit dem Konfigurator erstellt werden.
+	Für jedes Gerät wird eine Instanz angelegt.  
+	Unter dieser Instanz werden die Informationen abgelegt.  
+	Die Karten und Adressinformationen können hier aktiviert werden.  
+	Diese werden dann über Google Maps abgefragt. Dazu ist ein persönlicher API Key nötig.  
+	Weitere Infos unter folgendem Link:  
+	https://developers.google.com/maps/documentation/android-sdk/get-api-key?hl=de  
+	![Instanz](docs/Instanz_Config.png)
 __Konfigurationsseite__:
 
-Name     | Beschreibung
--------- | ------------------
-         |
-         |
+![Instanz](docs/Instanz_Config.png)
 
-### 5. Statusvariablen und Profile
+### 5. Statusvariablen
 
-Die Statusvariablen/Kategorien werden automatisch angelegt. Das Löschen einzelner kann zu Fehlfunktionen führen.
+Die Statusvariablen werden automatisch angelegt. 
+Wenn diese gelöscht werden, werden sie neu erstellt. Karten und Adressinformationen werden entfernt, wenn die entsprechenden Optionen, in der Konfiguration der Instanz, deaktiviert werden
 
-#### Statusvariablen
+### 6. Aktionen
 
-Name   | Typ     | Beschreibung
------- | ------- | ------------
-       |         |
-       |         |
-
-#### Profile
-
-Name   | Typ
------- | -------
-       |
-       |
-
-### 6. WebFront
-
-Die Funktionalität, die das Modul im WebFront bietet.
+	Es sind entsprechende Aktionen verfügbar, um die Sende Funktionen ausführen zu können.  
+	![Aktion](docs/Aktion.png)  
 
 ### 7. PHP-Befehlsreferenz
 
-`boolean FMI_BeispielFunktion(integer $InstanzID);`
-Erklärung der Funktion.
-
 Beispiel:
-`FMI_BeispielFunktion(12345);`
+`FMiP_UpdateDeviceData(12345);`
+Fragt die Daten aus ICloud ab.
