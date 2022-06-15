@@ -48,7 +48,7 @@
 			// todo...
 			if ($devices == "wrong credentials" || $devices == "") 
 			{
-				$this->LogMessage(__FUNCTION__. " No feedback from iCloud Server. Maybe wrong User or Password" ,10204);
+				$this->SendDebug(__FUNCTION__. " No feedback from iCloud Server. Maybe wrong User or Password" , 0);
 				return;
 			}
 			foreach ($devices as $device)

@@ -58,4 +58,8 @@ Copyright (c) 2013 Neal <neal@ineal.me>
 https://github.com/Neal/FindMyiPhone  
 Thanks for sharing
 
+### 6. Spenden
+
+Schenkungen zur Unterstützung sind hier möglich:
+
 <a href="https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=6CSLZLEKKGT8Q" target="_blank"><img src="https://www.paypalobjects.com/de_DE/DE/i/btn/btn_donate_LG.gif" border="0" /></a>
