@@ -24,8 +24,8 @@ class FindMyiPhone
         'clientTimestamp' => 0,
         'deviceUDID' => null,
         'inactiveTime' => 1,
-        'osVersion' => '7.0.3',
-        'productType' => 'iPhone6,1'
+        'osVersion' => '15.0',
+        'productType' => 'iPhone12,8'
     );
 
     private $server_context = array(
@@ -110,6 +110,7 @@ class FindMyiPhone
             'serverContext' => $this->server_context
         ));
         $get_data = json_decode($this->make_request('refreshClient', $post_data));
+        //print_r($get_data);
         if (property_exists($get_data, 'userInfo') && property_exists($get_data, 'content')) {
             //if ($get_data !== null)
             foreach ($get_data->content as $id => $device) {
