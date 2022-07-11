@@ -32,16 +32,21 @@
         
         private function GetFormData()
         {
-            $devices = $this->SendData();
-            
-
+            $devices = json_decode($this->SendData(),true);
             $guid = "{7B500376-2990-711D-7B4D-6D7D47351D73}";
             $Instances = IPS_GetInstanceListByModuleID($guid);
+
+            // Get all the instances that are connected to the configurators I/O
+            $connectedInstanceIDs = [];
+            foreach (IPS_GetInstanceListByModuleID($guid) as $instanceID) {
+                if (IPS_GetInstance($instanceID)['ConnectionID'] === IPS_GetInstance($this->InstanceID)['ConnectionID']) {
+                    // Add the instance ID to a list for the given address. Even though addresses should be unique, users could break things by manually editing the settings
+                    $connectedInstanceIDs[IPS_GetProperty($instanceID, 'DeviceID')][] = $instanceID;
+                }
+            }
             
             // Configurator
-            $Values = array();
-            $devices = json_decode($devices, true);
-            //$this->LogMessage(__FUNCTION__.print_r($devices,true) , 10206);
+            $values = [];
             if ($devices == "Empty User or Password") {
                 $this->SendDebug(__FUNCTION__, " Empty User or Password", 0);
                 return;
@@ -51,20 +56,9 @@
             } else {
                 foreach ($devices as $device) {
                     $ID	= 0;
-                    foreach ($Instances as $Instance) {
-                        //$this->SendDebug("Created Instances", IPS_GetObject($Instance)['ObjectName'] , 0);
-                        if (IPS_GetProperty($Instance, 'DeviceID')== $device['id']) {
-                            $ID = $Instance;
-                        }
-                    }
-                    $Values[] = [
-                    'instanceID' => $ID,
-                    'name'       => $device['name'],
-                    'DeviceID'   => $device['id'],
-                    'modelID'    => $device['deviceDisplayName'],
-                    'DetailType' => $device['modelDisplayName'],
-                    'create'	 =>
-                    [
+                    $value = [
+                    'DeviceID'  => $device['id'],
+                    'create'	=> [
                         "moduleID"      => "{7B500376-2990-711D-7B4D-6D7D47351D73}",
                         "configuration" => [
                             "DeviceID"  => $device['id'],
@@ -72,8 +66,47 @@
                         ]
                     ]
                 ];
+                if (isset($connectedInstanceIDs[$device])) {
+                    $value['name'] = IPS_GetName($connectedInstanceIDs[$device][0]);
+                    $value['instanceID'] = $connectedInstanceIDs[$device][0];
+                    $value['modelID']    = $device['deviceDisplayName'];
+                    $value['DetailType'] = $device['modelDisplayName'];
                 }
-                return json_encode($Values);
+                else {
+                    $value['name'] = 'Device ' . $device;
+                    $value['instanceID'] = 0;
+                    $value['modelID']    = '';
+                    $value['DetailType'] = '';
+                }
+                $values[] = $value;
+                }
+
+                foreach ($connectedInstanceIDs as $address => $instanceIDs) {
+                    foreach ($instanceIDs as $index => $instanceID) {
+                        // The first entry for each found address was already added as valid value
+                        if (($index === 0) && (in_array($address, $devices))) {
+                            continue;
+                        }
+    
+                        // However, if an address is not a found address or an address has multiple instances, they are erroneous
+                        $values[] = [
+                            'DeviceID' => $address,
+                            'name' => IPS_GetName($instanceID),
+                            'instanceID' => $instanceID
+                        ];
+                    }
+                }
+
+                return json_encode([
+                    'elements' => [
+                        [
+                            'type' => 'Configurator',
+                            'values' => $values
+                        ]
+                    ]
+                ]);
+
+                //return json_encode($values);
             }
         }
 
