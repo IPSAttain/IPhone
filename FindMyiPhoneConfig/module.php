@@ -34,7 +34,7 @@
         {
             $devices = json_decode($this->SendData(),true);
             $guid = "{7B500376-2990-711D-7B4D-6D7D47351D73}";
-            $Instances = IPS_GetInstanceListByModuleID($guid);
+            //$Instances = IPS_GetInstanceListByModuleID($guid);
 
             // Get all the instances that are connected to the configurators I/O
             $connectedInstanceIDs = [];
