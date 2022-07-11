@@ -34,7 +34,6 @@
         {
             $devices = json_decode($this->SendData(),true);
             $guid = "{7B500376-2990-711D-7B4D-6D7D47351D73}";
-            //$Instances = IPS_GetInstanceListByModuleID($guid);
 
             // Get all the instances that are connected to the configurators I/O
             $connectedInstanceIDs = [];
@@ -44,7 +43,6 @@
                     $connectedInstanceIDs[IPS_GetProperty($instanceID, 'DeviceID')][] = $instanceID;
                 }
             }
-            
             // Configurator
             $values = [];
             if ($devices == "Empty User or Password") {
@@ -55,39 +53,37 @@
                 return;
             } else {
                 foreach ($devices as $device) {
-                    $ID	= 0;
                     $value = [
                     'DeviceID'  => $device['id'],
                     'create'	=> [
-                        "moduleID"      => "{7B500376-2990-711D-7B4D-6D7D47351D73}",
+                        "moduleID"      => $guid,
                         "configuration" => [
                             "DeviceID"  => $device['id'],
                             "DeviceName" => $device['name']
+                            ]
                         ]
-                    ]
-                ];
-                if (isset($connectedInstanceIDs[$device])) {
-                    $value['name'] = IPS_GetName($connectedInstanceIDs[$device][0]);
-                    $value['instanceID'] = $connectedInstanceIDs[$device][0];
-                    $value['modelID']    = $device['deviceDisplayName'];
-                    $value['DetailType'] = $device['modelDisplayName'];
-                }
-                else {
-                    $value['name'] = 'Device ' . $device;
-                    $value['instanceID'] = 0;
-                    $value['modelID']    = '';
-                    $value['DetailType'] = '';
-                }
-                $values[] = $value;
+                    ];
+                    if (isset($connectedInstanceIDs[$device['id']])) {
+                        $value['name'] = IPS_GetName($connectedInstanceIDs[$device['id']][0]);
+                        $value['instanceID'] = $connectedInstanceIDs[$device['id']][0];
+                        $value['modelID']    = $device['deviceDisplayName'];
+                        $value['DetailType'] = $device['modelDisplayName'];
+                    }
+                    else {
+                        $value['name'] = $device['name'];
+                        $value['instanceID'] = 0;
+                        $value['modelID']    = '';
+                        $value['DetailType'] = '';
+                    }
+                    $values[] = $value;
                 }
 
                 foreach ($connectedInstanceIDs as $address => $instanceIDs) {
                     foreach ($instanceIDs as $index => $instanceID) {
                         // The first entry for each found address was already added as valid value
-                        if (($index === 0) && (in_array($address, $devices))) {
+                        if (($index === 0) && (!array_search($address,$devices))) {
                             continue;
                         }
-    
                         // However, if an address is not a found address or an address has multiple instances, they are erroneous
                         $values[] = [
                             'DeviceID' => $address,
@@ -96,17 +92,7 @@
                         ];
                     }
                 }
-
-                return json_encode([
-                    'elements' => [
-                        [
-                            'type' => 'Configurator',
-                            'values' => $values
-                        ]
-                    ]
-                ]);
-
-                //return json_encode($values);
+            return json_encode($values);
             }
         }
 
@@ -117,7 +103,6 @@
                 'Buffer' => utf8_encode("Get_Data"),
             ]));
             $this->SendDebug("Received from Gateway", $return, 0);
-            //$this->LogMessage(__FUNCTION__, $return , 10206);
             return $return;
         }
     }
