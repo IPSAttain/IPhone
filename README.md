@@ -1,3 +1,7 @@
+# Leider ist die Schnittstelle nicht mehr funktionsfähig.
+# Damit wird der Support für das Modul eingestellt.
+
+
 # ![English Section:](docs/README_EN.md)
 # IPS PHP Biliothek für die Abfrage von Daten eines Apple Gerätes.
 [![Version](https://img.shields.io/badge/Symcon-PHPModul-red.svg)](https://www.symcon.de/service/dokumentation/entwicklerbereich/sdk-tools/sdk-php/)
